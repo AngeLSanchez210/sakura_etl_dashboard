@@ -1,0 +1,68 @@
+/* =============================================================================
+   Estilos del dashboard Sakura Bookstore
+============================================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.stApp { background:var(--fondo); }
+html, body, .stApp, p, li, label, h1, h2, h3 { font-family:'Inter', sans-serif; }
+.stApp p, .stApp li { color:var(--tinta); }
+.block-container { padding-top:1.2rem; max-width:1400px; }
+header { background:transparent !important; }
+[data-testid="stToolbar"], [data-testid="stDecoration"] { visibility:hidden; }
+[data-testid="stExpandSidebarButton"], [data-testid="stSidebarCollapsedControl"] { visibility:visible !important; color:var(--tinta); }
+/* --- Barra lateral oscura --- */
+[data-testid="stSidebar"] { background:var(--azul); }
+[data-testid="stSidebar"] p, [data-testid="stSidebar"] label, [data-testid="stSidebar"] span { color:#ffffff !important; }
+[data-testid="stSidebar"] [data-baseweb="select"] span { color:var(--tinta) !important; }
+.perfil { text-align:center; padding:8px 0 18px 0; border-bottom:1px solid rgba(255,255,255,.15); margin-bottom:14px; }
+.perfil .avatar { width:84px; height:84px; border-radius:50%; background:#ffffff; margin:0 auto 12px auto;
+                   display:flex; align-items:center; justify-content:center; font-size:2.6rem;
+                   box-shadow:0 0 0 6px rgba(255,255,255,.15); }
+.perfil .nombre { color:#fff; font-size:1.25rem; font-weight:700; letter-spacing:.04em; }
+.perfil .sub { color:rgba(255,255,255,.65); font-size:.82rem; }
+/* Menú: se esconden los circulitos del radio y cada opción parece un botón */
+[data-testid="stSidebar"] [role="radiogroup"] label { padding:9px 12px; border-radius:8px; margin:2px 0; width:100%; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] > div > div:first-child { display:none; }
+[data-testid="stSidebar"] [data-baseweb="radio"] > div:first-child { display:none; }
+[data-testid="stSidebar"] [role="radiogroup"] label:hover { background:rgba(255,255,255,.08); }
+[data-testid="stSidebar"] [role="radiogroup"] label:has(input:checked),
+[data-testid="stSidebar"] [data-testid="stRadioOption"][data-selected="true"] { background:rgba(255,255,255,.16); border-left:4px solid var(--naranja); }
+[data-testid="stSidebar"] [role="radiogroup"] p { font-size:.98rem; }
+/* Botón "Sincronizar datos" con el color de acento */
+[data-testid="stSidebar"] [data-testid="stPopoverButton"] { background:var(--naranja); border:none; }
+[data-testid="stSidebar"] [data-testid="stPopoverButton"] p { color:#fff !important; font-weight:600; }
+/* --- Barra de título --- */
+.titulo { display:flex; justify-content:space-between; align-items:center; background:#fff; border-radius:8px;
+           padding:14px 22px; margin-bottom:16px; box-shadow:0 2px 8px rgba(16,24,40,.06); }
+.titulo h2 { margin:0; padding:0; font-size:1.35rem; font-weight:600; color:var(--tinta); }
+.titulo .menu { font-size:1.5rem; color:var(--tinta); }
+/* --- Tarjetas KPI --- */
+.kpis { display:grid; grid-template-columns:repeat(5, 1fr); gap:16px; margin-bottom:16px; }
+.kpi { background:#fff; border-radius:8px; padding:16px 18px; position:relative; box-shadow:0 2px 8px rgba(16,24,40,.06); }
+.kpi .titulo-kpi { font-size:.85rem; color:#475467; font-weight:500; }
+.kpi .valor { font-size:1.9rem; font-weight:600; color:var(--tinta); margin-top:10px; }
+.kpi .formula { font-size:.72rem; color:#667085; margin-top:4px; }
+.kpi .icono { position:absolute; top:12px; right:14px; font-size:1.15rem; color:var(--naranja); }
+.kpi.principal { background:var(--azul); }
+.kpi.principal .titulo-kpi, .kpi.principal .valor, .kpi.principal .formula { color:#fff; }
+.kpi.principal .icono { background:#fff; color:var(--azul); border-radius:50%; width:24px; height:24px;
+                         display:flex; align-items:center; justify-content:center; font-size:.8rem; font-weight:700; }
+/* --- Tarjetas blancas para gráficas y textos --- */
+[data-testid="stPlotlyChart"] { background:#fff; border-radius:8px; padding:8px; box-shadow:0 2px 8px rgba(16,24,40,.06); }
+.tarjeta { background:#fff; border-radius:8px; padding:18px 20px; box-shadow:0 2px 8px rgba(16,24,40,.06); margin-bottom:16px; }
+.tarjeta p { font-size:.92rem; line-height:1.5; }
+.tarjeta h4 { margin:0 0 8px 0; font-size:1rem; color:var(--tinta); }
+.lista-item { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid #eef1f5; font-size:.9rem; }
+.boton-naranja { display:inline-block; background:var(--naranja); color:#fff; border-radius:6px; padding:4px 14px; font-size:.8rem; font-weight:600; }
+/* --- Columna izquierda de cada pregunta --- */
+.numero { font-size:2.6rem; font-weight:700; color:var(--naranja); line-height:1; }
+.pregunta { font-size:1.15rem; font-weight:600; color:var(--tinta); margin:.4rem 0 1rem 0; }
+.dato { background:var(--azul); color:#fff; border-radius:8px; padding:14px 18px; margin-bottom:14px; }
+.dato .grande { font-size:1.8rem; font-weight:700; color:#fff; }
+.etiqueta { font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; color:var(--naranja); font-weight:700; }
+[data-testid="stBaseButton-primary"] { background:var(--naranja); border-color:var(--naranja); }
+[data-testid="stBaseButton-primary"] p { color:white !important; }
+/* Botón "Cerrar sesión" (barra lateral) y botón "Entrar" (login) */
+[data-testid="stSidebar"] [data-testid="stBaseButton-secondary"] { background:transparent; border:1px solid rgba(255,255,255,.4); }
+[data-testid="stBaseButton-primaryFormSubmit"] { background:var(--naranja); border-color:var(--naranja); }
+[data-testid="stBaseButton-primaryFormSubmit"] p { color:white !important; }

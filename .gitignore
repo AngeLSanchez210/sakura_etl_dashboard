@@ -1,0 +1,12 @@
+# Credenciales
+.env
+
+# Entorno virtual 
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+.streamlit/secrets.toml
+
+*.zip

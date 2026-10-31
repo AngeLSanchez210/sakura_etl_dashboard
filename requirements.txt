@@ -1,0 +1,6 @@
+streamlit>=1.40
+plotly>=5.19
+pandas
+psycopg2-binary
+neo4j
+python-dotenv
