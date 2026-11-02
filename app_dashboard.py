@@ -34,6 +34,13 @@ NEUTRO = "#d1d5db"       # barras que no se destacan
 ESCALA = ["#e6f6f3", "#b8e6dd", "#7fd0c1", "#3fb3a0", "#0f9d8a", "#0b6e61"]   # escala de colores
 VERDE, AMARILLO, ROJO = "#1b8a3a", "#d99100", "#c8322f"   # estado de clientes
 
+# Nombres de los motivos de devolución 
+MOTIVOS = {
+    "NO_DESEADO": "No deseado",
+    "DANADO": "Dañado",
+    "ERROR_PEDIDO": "Error en el pedido",
+    "OTRO": "Otro",
+}
 
 #variables de  colores para utilizar en estilos.css
 variables = f":root {{ --azul:{AZUL}; --naranja:{NARANJA}; --tinta:{TINTA}; --fondo:{FONDO}; }}"
@@ -617,8 +624,12 @@ elif elegida == "P5":
         WITH {CTE_DEVOLUCIONES}
         SELECT libro, motivo, SUM(cantidad) AS unidades, SUM(monto_reembolso) AS reembolso
         FROM devoluciones GROUP BY 1, 2 ORDER BY unidades DESC, reembolso DESC LIMIT 10""", PARAMS)
+        
+
 
     revisar_datos(por_motivo, mensaje="No hubo devoluciones aprobadas con estos filtros. ") #revisa los datos para verificar si hay devoluciones
+    por_motivo["motivo"] = por_motivo["motivo"].map(MOTIVOS).fillna(por_motivo["motivo"])
+    por_libro["motivo"] = por_libro["motivo"].map(MOTIVOS).fillna(por_libro["motivo"])
     principal = por_motivo.iloc[-1]                     # última fila = motivo con más unidades
     
     #muestra el motivo con más devoluciones y su porcentaje más interpretación
